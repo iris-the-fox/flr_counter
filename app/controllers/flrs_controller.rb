@@ -75,6 +75,6 @@ class FlrsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flr_params
-      params.require(:flr).permit(:number, :start_date, :info, :link)
+      params.require(:flr).permit(:number, :start_date, :info, :link, :current)
     end
 end

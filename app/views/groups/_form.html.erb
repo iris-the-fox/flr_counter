@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <%= form.hidden_field :flr_id, :value => @current_flr.id %>
   <div class="field">
     <%= form.label :number %>
     <%= form.number_field :number %>
