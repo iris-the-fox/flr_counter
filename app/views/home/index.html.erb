@@ -1,1 +1,4 @@
 <h1>I'm a home page</h1>
+<%= link_to("sign_up", new_user_registration_path) %>
+<%= link_to("Sign_out", destroy_user_session_path, method: :delete) %>
+<%= link_to("sign in", new_user_session_path ) %>
