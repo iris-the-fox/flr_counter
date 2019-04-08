@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_120236) do
+ActiveRecord::Schema.define(version: 2019_04_08_123634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 2019_04_08_120236) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "flr_id"
+    t.bigint "user_id"
+    t.index ["flr_id"], name: "index_groups_on_flr_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +49,6 @@ ActiveRecord::Schema.define(version: 2019_04_08_120236) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "groups", "flrs"
+  add_foreign_key "groups", "users"
 end
