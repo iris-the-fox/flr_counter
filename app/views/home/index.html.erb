@@ -1,4 +1,13 @@
 <h1>I'm a home page</h1>
-<%= link_to("sign_up", new_user_registration_path) %>
-<%= link_to("Sign_out", destroy_user_session_path, method: :delete) %>
-<%= link_to("sign in", new_user_session_path ) %>
+<% if current_user  %>
+  <p><%= current_user.email %></p>
+  <% if current_user.admin?  %>
+    <p>user is admin</p>
+  <% end %>  
+  <%= link_to("Sign_out", destroy_user_session_path, method: :delete) %>
+
+<% else %>
+  <%= link_to("sign_up", new_user_registration_path) %>
+  <%= link_to("sign in", new_user_session_path ) %>
+<% end %>
+
