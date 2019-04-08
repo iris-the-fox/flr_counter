@@ -1,5 +1,10 @@
 class FlrsController < ApplicationController
   before_action :set_flr, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action do 
+    redirect_to new_user_session_path unless current_user && current_user.admin?
+  end
+
 
   # GET /flrs
   # GET /flrs.json
@@ -69,6 +74,6 @@ class FlrsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flr_params
-      params.fetch(:flr, {})
+      params.require(:flr).permit(:number, :start_date, :info, :link)
     end
 end

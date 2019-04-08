@@ -4,6 +4,8 @@
 
 <table>
   <thead>
+    <tr>Номер</tr>
+    <tr>Инфо</tr>
     <tr>
       <th colspan="3"></th>
     </tr>
@@ -11,7 +13,10 @@
 
   <tbody>
     <% @flrs.each do |flr| %>
+
       <tr>
+        <td><%= flr.number %></td>
+        <td><%= flr.info %></td>        
         <td><%= link_to 'Show', flr %></td>
         <td><%= link_to 'Edit', edit_flr_path(flr) %></td>
         <td><%= link_to 'Destroy', flr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
