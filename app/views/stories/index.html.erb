@@ -17,10 +17,10 @@
       <tr>
         <td><%= story.name %></td>
         <td><%= story.link %></td>
-        <td><%= story.group %></td>
-        <td><%= link_to 'Show', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
-        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= story.group.name %></td>
+        <td><%= link_to 'Show', [story.group, story] %></td>
+        <td><%= link_to 'Edit', edit_group_story_path(story.group, story) %></td>
+        <td><%= link_to 'Destroy', [story.group, story], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Story', new_story_path %>
+<%= link_to 'New Story', new_group_story_path %>

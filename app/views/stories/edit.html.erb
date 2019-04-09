@@ -1,6 +1,6 @@
 <h1>Editing Story</h1>
 
-<%= render 'form', story: @story %>
+<%= render 'form' %>
 
-<%= link_to 'Show', @story %> |
-<%= link_to 'Back', stories_path %>
+<%= link_to 'Show', [@group, @story] %> |
+<%= link_to 'Back', group_stories_path %>

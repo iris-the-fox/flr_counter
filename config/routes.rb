@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :stories
-  resources :groups
+
+  resources :groups do
+  	resources :stories
+  end
   devise_for :users
   root to: 'home#index'
   resources :flrs

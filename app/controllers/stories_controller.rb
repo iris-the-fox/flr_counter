@@ -1,10 +1,12 @@
 class StoriesController < ApplicationController
+  before_action :set_group
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+
 
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = @group.stories
   end
 
   # GET /stories/1
@@ -14,7 +16,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/new
   def new
-    @story = Story.new
+    @story = @group.stories.new()
   end
 
   # GET /stories/1/edit
@@ -24,11 +26,11 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(story_params)
+    @story = @group.stories.new(story_params)
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.html { redirect_to [@group, @story], notice: 'Story was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
+        format.html { redirect_to [@group, @story], notice: 'Story was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to group_stories_url, notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +66,10 @@ class StoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
-      @story = Story.find(params[:id])
+      @story = @group.stories.find(params[:id])
+    end
+    def set_group
+      @group = Group.find(params[:group_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
