@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,except:[:index]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :group_owner, only: [:edit, :update, :destroy]
+                   
 
   # GET /groups
   # GET /groups.json
@@ -26,7 +28,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
 
-    @group = current_user.groups.new(group_params)
+    @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save
@@ -74,4 +76,12 @@ class GroupsController < ApplicationController
     def group_params
       params.require(:group).permit(:number, :name, :color, :flr_id, :user_id)
     end
+
+    def group_owner
+     unless @group.user_id == current_user.id
+      flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
+      redirect_to groups_path
+     end
+    end
+
 end
