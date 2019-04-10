@@ -1,21 +1,22 @@
-<p id="notice"><%= notice %></p>
-<h1>КУРАТОР</h1>
-<%= @group.user.email %>
-<p>
-	<p><%= @group.flr.number %></p>
-  <strong>Number:</strong>
+
+<h1><%= "КУРАТОР: " + @group.user.email %></h1>
+
+<h2><%= "ФЛР: " + @group.flr.number.to_s %></h2>
+<p><strong>Группа номер:</strong>
   <%= @group.number %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Название:</strong>
   <%= @group.name %>
 </p>
 
 <p>
-  <strong>Color:</strong>
+  <strong>Цвет:</strong>
   <%= @group.color %>
 </p>
+
+<%= render 'shared_views/stories' %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
