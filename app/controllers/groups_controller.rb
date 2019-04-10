@@ -7,7 +7,8 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    flr = Flr.find_by(current: true)
+    @groups = flr.groups
   end
 
   # GET /groups/1
