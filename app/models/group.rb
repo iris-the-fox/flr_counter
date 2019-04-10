@@ -6,9 +6,9 @@ class Group < ApplicationRecord
     message: ": Группа с таким номером уже существует" }
   validates :color, uniqueness: { scope: :flr_id,
     message: ": Группа с таким цветом уже существует" }
-	belongs_to :flr, dependent: :destroy
-	belongs_to :user, dependent: :destroy
-	has_many :stories
+	belongs_to :flr
+	belongs_to :user
+	has_many :stories, dependent: :destroy
   default_scope {order :number}
 
 	def all_stories
@@ -17,7 +17,7 @@ class Group < ApplicationRecord
 
   def all_stories=(names)
     self.stories = names.split("\r\n\r\n").map do |name|
-      self.stories.where(name: name.strip).first_or_create!
+      Story.create!(name: name.strip, group_id: self.id)
     end
   end
 

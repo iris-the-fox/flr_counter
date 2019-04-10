@@ -3,4 +3,5 @@ class Flr < ApplicationRecord
 	validates :current, uniqueness: { 
     message: ": Текущая ФЛР уже задана" }
 	has_many :groups
+
 end
