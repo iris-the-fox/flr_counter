@@ -1,7 +1,8 @@
 class StoriesController < ApplicationController
   before_action :set_group
+  before_action :group_owner
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-
+  
 
   # GET /stories
   # GET /stories.json
@@ -73,9 +74,16 @@ class StoriesController < ApplicationController
     end
 
     def set_story
-      @story = @group.stories.find(params[:id])
+      @story = Story.find(params[:id])
     end
 
+    def group_owner
+     if @group == nil
+      flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
+      redirect_to groups_path
+
+     end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params

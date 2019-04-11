@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
+
+
   before_action :set_group
+  before_action :group_owner  
   before_action :set_story
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-
 
   # GET /reviews
   # GET /reviews.json
@@ -76,6 +78,14 @@ class ReviewsController < ApplicationController
     end
     def set_review
       @review = @story.reviews.find(params[:id])
+    end
+
+    def group_owner
+     if @group == nil
+      flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
+      redirect_to groups_path
+      
+     end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
