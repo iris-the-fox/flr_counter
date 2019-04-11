@@ -32,7 +32,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to [@group, @story], notice: 'Story was successfully created.' }
+        format.html { redirect_to @story, notice: 'Story was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to [@group, @story], notice: 'Story was successfully updated.' }
+        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
         format.html { render :edit }
@@ -60,19 +60,21 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to group_stories_url, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to stories_url, notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_group
+      @group = Group.find_by(user_id: current_user, flr_id: @current_flr)
+    end
+
     def set_story
       @story = @group.stories.find(params[:id])
     end
-    def set_group
-      @group = Group.find(params[:group_id])
-    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params

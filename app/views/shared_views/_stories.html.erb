@@ -16,9 +16,9 @@
         <td><%= "#{i}." %></td>
         <td><%= story.name %></td>
         <td><%= story.link %></td>
-        <td><%= link_to 'Show', [story.group, story] %></td>
-        <td><%= link_to 'Edit', edit_group_story_path(story.group, story) %></td>
-        <td><%= link_to 'Destroy', [story.group, story], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [story] %></td>
+        <td><%= link_to 'Edit', edit_story_path(story) %></td>
+        <td><%= link_to 'Destroy', [story], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
