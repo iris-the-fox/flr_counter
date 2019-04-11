@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Text</th>
+      <th>Link</th>
+      <th>Author</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% i=0 %>
+
+
+    <% @reviews.each do |review| %>
+      <% i+=1 %>
+      <tr>
+        <td><%= "#{i}." %></td>
+        <td><%= review.text %></td>
+        <td><%= review.link %></td>
+        <td><%= review.author %></td>
+        <td><%= link_to 'Show', [review.story, review] %></td>
+        <td><%= link_to 'Edit', edit_story_review_path(review.story, review) %></td>
+        <td><%= link_to 'Destroy', [review.story, review], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,33 +1,8 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Reviews</h1>
+<h1>Рассказ: <%= @story.name %></h1>
+<p>Отзывов:<%= @story.reviews.count %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Story</th>
-      <th>Text</th>
-      <th>Link</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.story %></td>
-        <td><%= review.text %></td>
-        <td><%= review.link %></td>
-        <td><%= review.author %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<%= render 'shared_views/reviews' %>
 <br>
 
-<%= link_to 'New Review', new_review_path %>
+<%= link_to 'New Review', new_story_review_path %>

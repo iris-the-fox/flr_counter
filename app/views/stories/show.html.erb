@@ -15,5 +15,7 @@
   <%= "Группа № #{@story.group.number} - #{@story.group.color} (#{@story.group.name})" %>
 </p>
 
+<%= render 'shared_views/reviews' %>
+
 <%= link_to 'Edit', edit_story_path( @story) %> |
 <%= link_to 'Back', stories_path %>
