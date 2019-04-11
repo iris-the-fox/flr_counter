@@ -4,5 +4,7 @@ class Story < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: {
     message: ": Рассказ с таким названием уже существует" }
+  has_many :reviews, dependent: :destroy
+  accepts_nested_attributes_for :reviews
 
 end

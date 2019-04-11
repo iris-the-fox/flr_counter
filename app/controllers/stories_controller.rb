@@ -17,10 +17,12 @@ class StoriesController < ApplicationController
   # GET /stories/new
   def new
     @story = @group.stories.new()
+    @story.reviews.build
   end
 
   # GET /stories/1/edit
   def edit
+    @story.reviews.build
   end
 
   # POST /stories
@@ -74,6 +76,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:name, :link, :group_id)
+      params.require(:story).permit(:name, :link, :group_id, reviews_attributes: Review.attribute_names.map(&:to_sym).push(:_destroy),)
     end
 end

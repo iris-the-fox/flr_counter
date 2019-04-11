@@ -21,6 +21,10 @@
     <%= form.text_field :link %>
   </div>
 
+  <%= form.fields_for :reviews do |review| %>
+    <%= render 'review_fields', :f => review %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
