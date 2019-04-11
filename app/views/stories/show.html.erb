@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Group:</strong>
-  <%= @story.group %>
+  <strong>Группа:</strong>
+  <%= "Группа № #{@story.group.number} - #{@story.group.color} (#{@story.group.name})" %>
 </p>
 
 <%= link_to 'Edit', edit_group_story_path(@group, @story) %> |
