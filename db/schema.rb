@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_102639) do
+ActiveRecord::Schema.define(version: 2019_04_12_084956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2019_04_11_102639) do
     t.bigint "user_id"
     t.index ["flr_id"], name: "index_groups_on_flr_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body"
+    t.string "link"
+    t.string "author"
+    t.bigint "flr_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flr_id"], name: "index_messages_on_flr_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -71,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_102639) do
 
   add_foreign_key "groups", "flrs"
   add_foreign_key "groups", "users"
+  add_foreign_key "messages", "flrs"
   add_foreign_key "reviews", "stories"
   add_foreign_key "stories", "groups"
 end

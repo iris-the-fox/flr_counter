@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Story:</strong>
+  <%= @message.flr %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @message.body %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @message.link %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @message.author %>
+</p>
+
+<%= link_to 'Edit', edit_flr_message_path([@flr, @message]) %> |
+<%= link_to 'Back', flr_messages_path %>

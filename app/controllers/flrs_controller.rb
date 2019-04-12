@@ -3,7 +3,7 @@ class FlrsController < ApplicationController
   before_action do 
     redirect_to new_user_session_path unless current_user && current_user.admin?
   end
-  before_action :set_flr, only: [:show, :edit, :update, :destroy]
+  before_action :set_flr, only: [:show, :edit, :update, :destroy, :retrieve_pages]
 
 
 
@@ -65,6 +65,13 @@ class FlrsController < ApplicationController
       format.html { redirect_to flrs_url, notice: 'Flr was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def retrieve_pages
+    @flr.info = Forum_pages.new(@flr.link).last_page
+    @flr.save
+    redirect_to @flr, notice: 'Last page was successfully added.'
+
   end
 
   private

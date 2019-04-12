@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Text</th>
+      <th>Link</th>
+      <th>Author</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% i=0 %>
+
+
+    <% @messages.each do |message| %>
+      <% i+=1 %>
+      <tr>
+        <td><%= "#{i}." %></td>
+        <td><%= message.body %></td>
+        <td><%= message.link %></td>
+        <td><%= message.author %></td>
+        <td><%= link_to 'Show', [message.flr, message] %></td>
+
+        <td><%= link_to 'Destroy', [message.flr, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
