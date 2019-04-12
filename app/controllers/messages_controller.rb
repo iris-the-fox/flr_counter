@@ -19,13 +19,21 @@ class MessagesController < ApplicationController
   end
 
   def create
-  	
-  	@message = @flr.messages.new(link: 'some link' )
-  	if @message.save
-         redirect_to flr_messages_path, notice: 'Story was successfully created.'
-        else
-         render :new 
-    end
+  	@page_ar=[]
+  	(1..@flr.info.to_i).each do |page|
+  	  @one_page_ar = ForumWS.new(page).review_arr
+  	  @page_ar << @one_page_ar
+  	end
+
+  	@page_ar.flatten!
+
+  	@page_ar.each do |record|
+  		@message = @flr.messages.new(body: record.body, link: record.link, author: record.author )
+  		@message.save
+  	end
+
+    redirect_to flr_messages_path, notice: 'Story was successfully created.'
+
   end
 
   def destroy
