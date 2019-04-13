@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 	  before_action :set_message, only: [:show, :destroy]
 
   def index
-   @messages = @flr.messages
+   @messages = @flr.messages.order(:link)
   end
 
   def show
@@ -19,10 +19,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-  	@page_ar=[]
+  	@page_ar = Set[]
   	(1..@flr.info.to_i).each do |page|
   	  @one_page_ar = ForumWS.new(page).review_arr
-  	  @page_ar << @one_page_ar
+  	  @page_ar.add(@one_page_ar) 
   	end
 
   	@page_ar.flatten!
@@ -37,6 +37,8 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+  	@message.destroy
+    redirect_to flr_messages_url, notice: 'Msg was successfully destroyed.' 
   end
   
 
