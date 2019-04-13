@@ -15,7 +15,7 @@
   <tbody>
     <% @pages.each do |page| %>
       <tr>
-        <td><%= page.body[0..100] %></td>
+        <td><%= page.body[500..1000] %></td>
         <td><%= page.number %></td>
         <td><%= page.link %></td>
         <td><%= link_to 'Show', page %></td>

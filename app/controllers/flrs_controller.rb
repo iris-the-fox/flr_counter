@@ -68,6 +68,7 @@ class FlrsController < ApplicationController
   end
 
   def retrieve_last_page
+    @flr = @current_flr
     @flr.last_page = Forum_pages.new(@flr.link).last_page
     @flr.save
     redirect_to @flr, notice: 'Last page was successfully added.'

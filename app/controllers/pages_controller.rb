@@ -70,7 +70,7 @@ class PagesController < ApplicationController
       @page.save
     end
 
-    redirect_to flr_pages_path, notice: 'Page was successfully added.'
+    redirect_to flr_pages_path, notice: 'Pages was successfully added.'
 
   end  
 
