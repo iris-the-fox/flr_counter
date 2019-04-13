@@ -2,13 +2,14 @@
 <p>Текущая <%= @flr.current %></p>
 <p>Номер <%= @flr.number %></p>
 <p>Последняя страница: <%= @flr.last_page %></p>
+<p>Страниц в базе: <%= @flr.pages.count %></p>
 <p> Ссылка <%= @flr.link %></p>
 <p> Дата<%= @flr.start_date %></p>
 <%= link_to 'Edit', edit_flr_path(@flr) %> |
 <%= link_to 'Back', flrs_path %>
 
 
-<%= button_to [:retrieve_pages, @flr] do %>
+<%= button_to [:retrieve_last_page, @flr] do %>
 Получить страницы для ФЛР номер <%= @flr.number %>
 <% end %>
 

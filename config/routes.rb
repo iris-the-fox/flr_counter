@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :pages
   resources :groups
   resources :stories  do
    resources :reviews 		
@@ -9,8 +10,14 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :flrs do
     member do
-      post "retrieve_pages"
+      post "retrieve_last_page"
     end
+    resources :pages do
+      collection do
+        get "retrieve_pages"
+        post "all_pages"
+      end
+    end    
 
     
     resources :messages do
