@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <p>Текущая <%= @flr.current %></p>
 <p>Номер <%= @flr.number %></p>
-<p>Последняя страница<%= @flr.info %></p>
+<p>Последняя страница: <%= @flr.last_page %></p>
 <p> Ссылка <%= @flr.link %></p>
 <p> Дата<%= @flr.start_date %></p>
 <%= link_to 'Edit', edit_flr_path(@flr) %> |

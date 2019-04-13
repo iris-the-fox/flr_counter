@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 
   def create
   	@page_ar = Set[]
-  	(1..@flr.info.to_i).each do |page|
+  	(87..@flr.last_page).each do |page|
   	  @one_page_ar = ForumWS.new(page).review_arr
   	  @page_ar.add(@one_page_ar) 
   	end
