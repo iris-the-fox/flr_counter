@@ -65,7 +65,7 @@ class PagesController < ApplicationController
   def all_pages
     @page_ar = Set[]
     (@flr.first_page..@flr.last_page).each do |page|
-      some_page = PageWS.new(page)
+      some_page = PageWS.new(page, @flr.link)
       @page = @flr.pages.new(body: some_page.body, link: some_page.link, number: some_page.number)
       @page.save
     end
@@ -77,7 +77,7 @@ class PagesController < ApplicationController
   private
 
     def set_flr
-      @flr = @current_flr
+      @flr = Flr.find(params[:flr_id])
     end
 
     # Use callbacks to share common setup or constraints between actions.

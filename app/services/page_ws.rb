@@ -5,9 +5,10 @@ class PageWS
     base_uri 'https://fantlab.ru/forum/'
     attr_accessor :body, :link, :number
 
-    def initialize(page_number)
+    def initialize(page_number, link)
       @number = page_number
-      @link = "https://fantlab.ru/forum/forum13page1/topic10641page#{@number}"
+      link_ingot = link.split('page')
+      @link = "#{link_ingot[0]}page#{link_ingot[1]}page#{@number}"
       page = HTTParty.get(link)
       doc = Nokogiri::HTML(page.body)
       body = doc.xpath('/html/body')
