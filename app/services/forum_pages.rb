@@ -2,7 +2,7 @@ require 'httparty'
 require 'nokogiri'
 class Forum_pages
   include HTTParty
-  attr_accessor :last_page, :pages
+  attr_accessor :last_page
   base_uri 'https://fantlab.ru/forum/'
   
   def initialize(link)
