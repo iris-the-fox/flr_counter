@@ -4,6 +4,7 @@ class Review < ApplicationRecord
 
   private
     def add_link_and_author
+    	self.text.gsub!( /\n/, "" ).gsub!( /\r/, "" )
     	msg = Review_finder.new(self.text)
     	self.link = msg.link
     	self.author = msg.author
