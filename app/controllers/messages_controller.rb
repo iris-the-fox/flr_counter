@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
   def create
     set = MessageArrayWS.new(@page.body).review_arr
     set.each do |review|
-      @message = @page.messages.find_or_create_by(body: review.body, link: review.link, author: review.author)
+      @message = @page.messages.create(body: review.body, link: review.link, author: review.author)
     end
 
     redirect_to flr_page_messages_path, notice: 'Messages was successfully created.'
