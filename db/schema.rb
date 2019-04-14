@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_105414) do
+ActiveRecord::Schema.define(version: 2019_04_14_143044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2019_04_13_105414) do
     t.string "body"
     t.string "link"
     t.string "author"
-    t.bigint "flr_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["flr_id"], name: "index_messages_on_flr_id"
+    t.bigint "page_id"
+    t.index ["page_id"], name: "index_messages_on_page_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_105414) do
 
   add_foreign_key "groups", "flrs"
   add_foreign_key "groups", "users"
-  add_foreign_key "messages", "flrs"
+  add_foreign_key "messages", "pages"
   add_foreign_key "pages", "flrs"
   add_foreign_key "reviews", "stories"
   add_foreign_key "stories", "groups"

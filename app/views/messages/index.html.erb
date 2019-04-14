@@ -1,3 +1,5 @@
+<%= button_to 'Разобрать на сообщения',  {action: "create"} %>
+
 <table>
   <thead>
     <tr>
@@ -20,9 +22,9 @@
         <td><%= message.body %></td>
         <td><%= message.link %></td>
         <td><%= message.author %></td>
-        <td><%= link_to 'Show', [message.flr, message] %></td>
+        <td><%= link_to 'Show', [message.page.flr, message.page, message] %></td>
 
-        <td><%= link_to 'Destroy', [message.flr, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [message.page.flr, message.page, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

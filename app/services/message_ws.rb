@@ -1,23 +1,10 @@
-require 'nokogiri'
 class MessageWS
+  attr_accessor :body, :link, :author
 
-    base_uri 'https://fantlab.ru/forum/'
-    attr_accessor :review_arr
+  def initialize(row)
+    @body = row.xpath('td/table/tr/td/table/tr/td/div/font').inner_html # текст
+    @author =  row.xpath('td/span/a/b').text # ник
+    @link = row.xpath('td/table/tr/td/span/a[1]').map{ |link| link['href'] } #ссылка
+  end
 
-    def initialize(page_body)
-     
-      doc = Nokogiri::HTML(page_bbody)
-      body = doc.xpath('/html/body')
-      content = body.css('.layout .middle .main-container .content')
-      forum = content.xpath("table[3]")
-      @review_arr = Set[]
-      forum.xpath("tr").each do |row|
-        review = Reviews_finder.new(row)
-        @review_arr.add(review)
-
-      end
-
-        
-
-    end
 end

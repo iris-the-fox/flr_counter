@@ -1,9 +1,10 @@
 class MessagesController < ApplicationController
-      before_action :set_flr
+    before_action :set_flr
+    before_action :set_page
 	  before_action :set_message, only: [:show, :destroy]
 
   def index
-   @messages = @flr.messages.order(:link)
+   @messages = @page.messages.order(:link)
   end
 
   def show
@@ -15,45 +16,42 @@ class MessagesController < ApplicationController
   end
 
   def new
-  	 @message = @flr.messages.new()
+  	 @message = @page.messages.new()
   end
 
   def create
-  	@page_ar = Set[]
-  	(87..@flr.last_page).each do |page|
-  	  @one_page_ar = ForumWS.new(page).review_arr
-  	  @page_ar.add(@one_page_ar) 
-  	end
+    set = MessageArrayWS.new(@page.body).review_arr
+    set.each do |review|
+      @message = @page.messages.find_or_create_by(body: review.body, link: review.link, author: review.author)
+    end
 
-  	@page_ar.flatten!
-
-  	@page_ar.each do |record|
-  		@message = @flr.messages.new(body: record.body, link: record.link, author: record.author )
-  		@message.save
-  	end
-
-    redirect_to flr_messages_path, notice: 'Story was successfully created.'
+    redirect_to flr_page_messages_path, notice: 'Messages was successfully created.'
 
   end
 
   def destroy
   	@message.destroy
-    redirect_to flr_messages_url, notice: 'Msg was successfully destroyed.' 
+    redirect_to flr_page_messages_url, notice: 'Msg was successfully destroyed.' 
   end
   
 
   private
 
-  def set_flr
-  	@flr = @current_flr
-  end
+    def set_flr
+      @flr = Flr.find(params[:flr_id])
+    end
 
-     def set_message
-      @message = @flr.messages.find(params[:id])
+
+    def set_page
+    	@page = Page.find(params[:page_id])
+    end
+
+    def set_message
+      @message = @page.messages.find(params[:id])
     end 
 
      def message_params
-      params.require(:message).permit(:body, :link, :author, :flr_id)
+      params.require(:message).permit(:body, :link, :author, :page_id)
     end
 
 end

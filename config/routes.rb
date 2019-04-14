@@ -15,13 +15,9 @@ Rails.application.routes.draw do
       collection do
         post "all_pages"
       end
-    end    
-
-    
-    resources :messages do
-      collection do
-        get "retrieve_posts"
-      end
+      resources :messages 
     end
   end
+
+  
 end
