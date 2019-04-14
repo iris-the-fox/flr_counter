@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
     resources :pages do
       collection do
-        get "retrieve_pages"
         post "all_pages"
       end
     end    

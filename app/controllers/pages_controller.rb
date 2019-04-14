@@ -57,18 +57,21 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to flr_pages_url, notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def all_pages
-    @page_ar = Set[]
+
     (@flr.first_page..@flr.last_page).each do |page|
       some_page = PageWS.new(page, @flr.link)
-      @page = @flr.pages.new(body: some_page.body, link: some_page.link, number: some_page.number)
-      @page.save
+
+      @page = @flr.pages.find_or_create_by(body: some_page.body, link: some_page.link, number: some_page.number)
+
     end
+    @flr.first_page = @flr.last_page-1
+    @flr.save
 
     redirect_to flr_pages_path, notice: 'Pages was successfully added.'
 
@@ -87,6 +90,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:body, :number, :flr_id)
+      params.require(:page).permit(:body, :number, :link, :flr_id)
     end
 end
