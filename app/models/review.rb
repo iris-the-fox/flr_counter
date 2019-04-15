@@ -1,11 +1,11 @@
 class Review < ApplicationRecord
   belongs_to :story
-  before_save :add_link_and_author
+  before_save :add_link_and_author, if: :new_record?
 
   private
     def add_link_and_author
-    	self.text.gsub!( /\n/, "" ).gsub!( /\r/, "" )
-    	msg = Review_finder.new(self.text)
+    	text = self.text.gsub( /\n/, "" ).gsub( /\r/, "" )
+    	msg = Review_finder.new(text)
     	self.link = msg.link
     	self.author = msg.author
     end

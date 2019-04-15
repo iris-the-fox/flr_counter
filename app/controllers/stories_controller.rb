@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
   before_action :set_group
   before_action :group_owner
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_story, only: [:show, :edit, :update, :destroy, :show_column]
   
 
   # GET /stories
@@ -66,6 +66,8 @@ class StoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

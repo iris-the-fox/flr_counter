@@ -1,6 +1,6 @@
 
 <h1><%= "КУРАТОР: " + @group.user.email %></h1>
-
+<%= link_to("Посмотреть колонку", show_column_group_path(@group)) %> 
 <h2><%= "ФЛР: " + @group.flr.number.to_s %></h2>
 <p><strong>Группа номер:</strong>
   <%= @group.number %>

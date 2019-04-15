@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
 
-  resources :groups
+  resources :groups do
+    get 'show_column', on: :member
+  end
   resources :stories  do
-   resources :reviews 		
+    resources :reviews		
   end
   devise_for :users
   root to: 'home#index'

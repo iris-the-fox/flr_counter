@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!,except:[:index]
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :show_column]
   before_action :group_owner, only: [:edit, :update, :destroy]
                    
 
@@ -65,6 +65,10 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def show_column
+    render '/groups/column.text.erb', layout: false, content_type: 'text/plain'
   end
 
   private

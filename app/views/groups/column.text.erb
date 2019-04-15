@@ -1,0 +1,25 @@
+[subtitle]Добро пожаловать в обитель последней представительницы народа Зен-Хоберис, прекрасной, зеленоликой Гаморы[/subtitle]
+
+<% n = @group.stories.count +1  %>
+<a name='r<%= n %>'>[b]Читать отзывы:[/b]</a>
+
+<% @group.stories.each_with_index do |s, i| %>
+<% i+=1 %>
+[*][LINK=#r<%= i %>]<%= i %>. <%= s.name %> [/link] – количество отзывов: <%= s.reviews.count %>
+<% end %>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum ratione ad quos placeat a, earum ipsum nam mollitia, magnam voluptatem consectetur itaque, enim animi voluptates, fugiat sapiente voluptatibus veritatis dignissimos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque unde corporis rem cumque delectus dolore doloribus recusandae soluta vero, provident cupiditate odit sequi iste saepe, dolorum dolor itaque, consectetur libero.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum ratione ad quos placeat a, earum ipsum nam mollitia, magnam voluptatem consectetur itaque, enim animi voluptates, fugiat sapiente voluptatibus veritatis dignissimos.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque unde corporis rem cumque delectus dolore doloribus recusandae soluta vero, provident cupiditate odit sequi iste saepe, dolorum dolor itaque, consectetur libero.
+
+<p class=abzac><div class='t2'> </div></p>
+
+[b]О Т З Ы В Ы[/b]
+<% @group.stories.each_with_index do |s, i| %>
+<% i+=1 %>
+<a name='r<%= i %>'>[subtitle]<%= i %>. <%= s.name %> [/subtitle]</a>
+[LINK=#r<%= n %>]Вернуться к началу [/link]
+<% s.reviews.each_with_index do |r, i|  %>
+<% i+=1 %>
+<%= i %>. [URL=<%= r.link %>]<%= r.author %>[/URL]
+<%= r.text %>
+<% end  %>
+<% end  %>

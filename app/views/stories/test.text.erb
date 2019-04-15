@@ -1,0 +1,6 @@
+[b]Добро пожаловать в гостиную факультета Гриффиндор.[/b]
+
+
+<a name='r01'>[subtitle] <%= @story.name %> [/subtitle]</a>
+1. [URL=<%=@story.reviews.last.link %>] <%=@story.reviews.last.author %> [/URL]
+<%= @story.reviews.last.text  %>
