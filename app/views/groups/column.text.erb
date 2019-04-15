@@ -8,13 +8,19 @@
 [*][LINK=#r<%= i %>]<%= i %>. <%= s.name %> [/link] – количество отзывов: <%= s.reviews.count %>
 <% end %>
 
-<%# @group.stories.each do |s|  %>
-<%# s.reviews.each do |r|  %>
-<%#=  r.author %>
-<%# end  %>
-<%# end  %>
+Всего отзывов: <%= @group.reviews.count %>
+
+
+
+
 
 [cut=]
+<p class=abzac><div class='t2'> </div></p>
+Наши чемпионы:
+<% @group.reviews.pluck(:author).uniq.each do |a| %>
+<%= a   %>:<%= author_count(a) %> 
+<% end %>
+
 <p class=abzac><div class='t2'> </div></p>
 
 [b]О Т З Ы В Ы[/b]

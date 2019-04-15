@@ -10,6 +10,7 @@ class Group < ApplicationRecord
 	belongs_to :user
 	has_many :stories, dependent: :destroy
     default_scope {order :number}
+  has_many :reviews, through: :stories
 
 	def all_stories
       self.stories.map(&:name).join("\r\n\r\n")

@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :story
   before_save :add_link_and_author, if: :new_record?
+  belongs_to :group
 
   private
     def add_link_and_author

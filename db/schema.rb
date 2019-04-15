@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_143044) do
+ActiveRecord::Schema.define(version: 2019_04_15_125005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_04_14_143044) do
     t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_reviews_on_group_id"
     t.index ["story_id"], name: "index_reviews_on_story_id"
   end
 
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_04_14_143044) do
   add_foreign_key "groups", "users"
   add_foreign_key "messages", "pages"
   add_foreign_key "pages", "flrs"
+  add_foreign_key "reviews", "groups"
   add_foreign_key "reviews", "stories"
   add_foreign_key "stories", "groups"
 end
