@@ -14,8 +14,8 @@
 [cut=]
 <p class=abzac><div class='t2'> </div></p>
 Наши чемпионы:
-<% @group.reviews.pluck(:author).uniq.each do |a| %>
-<%= a   %>:<%= author_count(a) %> 
+<% author_count(@group).each do |a, c| %>
+<%= a %> - <%= grammatical_case(c) %>
 <% end %>
 
 <p class=abzac><div class='t2'> </div></p>

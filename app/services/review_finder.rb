@@ -6,8 +6,8 @@ class Review_finder
       @link = msg.link
       @author = msg.author
       else
-      	 @link  = nil
-         @author = nil
+      	@link  = nil
+        @author = nil
      end
 
   end
