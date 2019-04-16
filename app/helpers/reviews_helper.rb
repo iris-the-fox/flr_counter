@@ -15,6 +15,28 @@ module ReviewsHelper
   	end
   end
 
+  # def quotes(msg)
+  	
+  # 	msg_array = msg.split("\n")
+  # 	new_msg_array = []
+  # 	msg_array.each do |str|
+
+  # 		if str == "цитата"
+  # 			puts str
+  # 			new_msg_array << "[q]"
+  # 		elsif str == "конец цитаты"
+  # 			new_msg_array << "[/q]"
+  # 		else 
+  # 			new_msg_array << str
+  # 		end
+  # 	end
+
+  # 	return msg = new_msg_array.join
+  # end
+
+
+
+
 
 end
 
