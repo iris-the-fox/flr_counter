@@ -20,5 +20,5 @@
   <%= @review.author %>
 </p>
 
-<%= link_to 'Edit', edit_story_review_path([@story, @review]) %> |
-<%= link_to 'Back', story_reviews_path %>
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', story_reviews_path(@review.story) %>

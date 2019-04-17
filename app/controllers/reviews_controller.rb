@@ -1,10 +1,9 @@
 class ReviewsController < ApplicationController
 
 
-  #before_action :set_group
-  before_action :group_owner  
-  before_action :set_story
+  before_action :set_story, only: [:index, :new, :create]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :group_owner, only:  [:new, :create]
 
   # GET /reviews
   # GET /reviews.json
@@ -70,17 +69,17 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_story
-      @story = Stories.find(params[:story_id])
+      @story = Story.find(params[:story_id])
     end
     
     def set_review
-      @review = @story.reviews.find(params[:id])
+      @review = Review.find(params[:id])
     end
 
     def group_owner
-     if @group == nil
+     if @review.story.group.user != current_user
       flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
-      redirect_to groups_path
+      redirect_to flr_path(@review.story.group.flr)
       
      end
     end

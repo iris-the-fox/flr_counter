@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
-  before_action :set_group
-  before_action :group_owner
+  before_action :set_group, only: [:index, :new, :create]
+  before_action :group_owner, only:  [:new, :create]
   before_action :set_story, only: [:show, :edit, :update, :destroy, :show_column]
   
 
