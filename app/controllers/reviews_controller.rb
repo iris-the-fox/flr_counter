@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to [@story, @review], notice: 'Review was successfully created.' }
+        format.html { redirect_to  @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to [@story, @review], notice: 'Review was successfully updated.' }
+        format.html { redirect_to  @review, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -58,9 +58,10 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
+    @story = @review.story
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to story_reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to story_reviews_url(@story), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,7 +78,7 @@ class ReviewsController < ApplicationController
     end
 
     def group_owner
-     if @review.story.group.user != current_user
+     if @story.group.user != current_user
       flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
       redirect_to flr_path(@review.story.group.flr)
       
