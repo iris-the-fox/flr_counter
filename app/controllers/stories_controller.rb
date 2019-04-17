@@ -73,7 +73,7 @@ class StoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
-      @group = Group.find_by(user_id: current_user)
+      @group = Group.find(params[:group_id])
     end
 
     def set_story
