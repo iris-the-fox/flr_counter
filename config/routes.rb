@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       member do
         post "retrieve_last_page"
       end
-      resources :pages do
+      resources :pages, exept: [:update, :edit] do
         collection do
           post "all_pages"
         end

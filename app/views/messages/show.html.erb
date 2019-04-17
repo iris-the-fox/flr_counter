@@ -19,5 +19,5 @@
   <%= @message.author %>
 </p>
 
-<%= link_to 'Edit', edit_flr_page_message_path([@flr, @page, @message]) %> |
-<%= link_to 'Back', flr_page_messages_path %>
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', page_messages_path(@message.page) %>

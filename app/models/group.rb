@@ -10,7 +10,7 @@ class Group < ApplicationRecord
 
 	belongs_to :user
 	has_many :stories, dependent: :destroy
-  accepts_nested_attributes_for :stories, reject_if: :all_blank?
+  accepts_nested_attributes_for :stories, reject_if: :all_blank
 
 
 

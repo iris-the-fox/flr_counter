@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
-    before_action :set_flr
-    before_action :set_page
+    before_action :set_page, only: [:index, :new, :create]
 	  before_action :set_message, only: [:show, :destroy]
 
   def index
@@ -37,17 +36,13 @@ class MessagesController < ApplicationController
 
   private
 
-    def set_flr
-      @flr = Flr.find(params[:flr_id])
-    end
-
 
     def set_page
     	@page = Page.find(params[:page_id])
     end
 
     def set_message
-      @message = @page.messages.find(params[:id])
+      @message = Message.find(params[:id])
     end 
 
      def message_params

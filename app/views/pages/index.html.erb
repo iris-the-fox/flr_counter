@@ -19,9 +19,8 @@
         <td><%= page.body[500..1000] %></td>
         <td><%= page.number %></td>
         <td><%= page.link %></td>
-        <td><%= link_to 'Show', [page.flr, page] %></td>
-        <td><%= link_to 'Edit', edit_flr_page_path(page.flr, page) %></td>
-        <td><%= link_to 'Destroy', [page.flr, page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', page %></td>
+        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
