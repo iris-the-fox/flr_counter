@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <ul>
+      <li><%= link_to("Текущая ФЛР", flr_path(@current_flr) )  %> </li>
+      <li><%= link_to("Group", group_path(current_user.groups.first) )  %> </li>
+
+    </ul>
     <%= render 'layouts/alerts' %>
     <%= yield %>
   </body>

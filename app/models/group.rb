@@ -2,14 +2,17 @@ class Group < ApplicationRecord
 	validates :number, :color, :name, presence: true
 	validates :name, uniqueness: { scope: :flr_id,
       message: ": Группа с таким названием уже существует" }
-    validates :number, uniqueness: { scope: :flr_id,
+  validates :number, uniqueness: { scope: :flr_id,
       message: ": Группа с таким номером уже существует" }
-    validates :color, uniqueness: { scope: :flr_id,
+   validates :color, uniqueness: { scope: :flr_id,
       message: ": Группа с таким цветом уже существует" }
 	belongs_to :flr
+
 	belongs_to :user
 	has_many :stories, dependent: :destroy
-    default_scope {order :number}
+
+
+
   has_many :reviews, through: :stories
 
 	def all_stories

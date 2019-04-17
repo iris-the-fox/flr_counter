@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
 
-  before_action :set_group
+  #before_action :set_group
   before_action :group_owner  
   before_action :set_story
   before_action :set_review, only: [:show, :edit, :update, :destroy]
@@ -69,13 +69,10 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
 
-    def set_group
-      @group = Group.find_by(user_id: current_user, flr_id: @current_flr)
-    end
-
     def set_story
-      @story = @group.stories.find(params[:story_id])
+      @story = Stories.find(params[:story_id])
     end
+    
     def set_review
       @review = @story.reviews.find(params[:id])
     end

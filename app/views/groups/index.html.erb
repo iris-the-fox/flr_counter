@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>ФЛР</th>
       <th>Номер</th>
       <th>Название</th>
       <th>Цвет</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
+        <td><%= group.flr.number %></td>        
         <td><%= group.number %></td>
         <td><%= group.name %></td>
         <td><%= group.color %></td>
