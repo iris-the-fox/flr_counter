@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!,except:[:index]
+  before_action :set_flr, only: [:index, :new, :create]
   before_action :set_group, only: [:show, :edit, :update, :destroy, :show_column]
   before_action :group_owner, only: [:edit, :update, :destroy]
                    
@@ -8,7 +9,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     
-    @groups = Group.all
+    @groups = @flr.groups.all
   end
 
   # GET /groups/1
@@ -73,6 +74,11 @@ class GroupsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_flr
+      @flr = Flr.find(params[:flr_id])
+    end
+
     def set_group
       @group = Group.find(params[:id])
     end

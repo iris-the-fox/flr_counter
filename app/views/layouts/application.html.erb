@@ -12,7 +12,7 @@
   <body>
     <ul>
       <li><%= link_to("Текущая ФЛР", flr_path(@current_flr) )  %> </li>
-      <li><%= link_to("Group", group_path(current_user.groups.first) )  %> </li>
+      <li><%= link_to("Все группы", flr_groups_path(@current_flr) )  %> </li>
 
     </ul>
     <%= render 'layouts/alerts' %>
