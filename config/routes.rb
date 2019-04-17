@@ -12,7 +12,11 @@ Rails.application.routes.draw do
         collection do
           post "all_pages"
         end
-        resources :messages 
+        resources :messages do
+          collection do
+            post "all_messages"
+          end
+        end
       end
       resources :groups do
         get 'show_column', on: :member

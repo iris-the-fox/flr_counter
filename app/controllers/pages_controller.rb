@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_flr, only: [:index, :new, :create]
+  before_action :set_flr, only: [:index, :new, :create, :all_pages]
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   # GET /pages

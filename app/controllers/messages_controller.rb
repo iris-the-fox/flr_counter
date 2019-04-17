@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-    before_action :set_page, only: [:index, :new, :create]
+    before_action :set_page, only: [:index, :new, :all_messages]
 	  before_action :set_message, only: [:show, :destroy]
 
   def index
@@ -10,27 +10,23 @@ class MessagesController < ApplicationController
   
   end
 
-  def retrieve_posts
-
-  end
-
   def new
   	 @message = @page.messages.new()
   end
 
-  def create
+  def all_messages
     set = MessageArrayWS.new(@page.body).review_arr
     set.each do |review|
       @message = @page.messages.create(body: review.body, link: review.link, author: review.author)
     end
 
-    redirect_to flr_page_messages_path, notice: 'Messages was successfully created.'
+    redirect_to page_messages_path(@page), notice: 'Messages was successfully created.'
 
   end
 
   def destroy
   	@message.destroy
-    redirect_to flr_page_messages_url, notice: 'Msg was successfully destroyed.' 
+    redirect_to page_messages_url, notice: 'Msg was successfully destroyed.' 
   end
   
 

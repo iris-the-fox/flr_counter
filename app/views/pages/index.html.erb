@@ -20,6 +20,7 @@
         <td><%= page.number %></td>
         <td><%= page.link %></td>
         <td><%= link_to 'Show', page %></td>
+        <td><%= link_to 'Разобрать на сообщения', all_messages_page_messages_path(page), method: :post %></td>
         <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
