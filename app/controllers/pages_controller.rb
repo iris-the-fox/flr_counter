@@ -38,20 +38,20 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
+    @flr = @page.flr
     @page.destroy
-    redirect_to flr_pages_url, notice: 'Page was successfully destroyed.' 
+    redirect_to flr_pages_url(@flr), notice: 'Page was successfully destroyed.' 
 
   end
 
   def all_pages
-
-    (@flr.first_page..@flr.last_page).each do |page|
+    range = (@flr.first_page..@flr.last_page).to_a - @flr.pages.pluck(:number)
+    range.each do |page|
       some_page = PageWS.new(page, @flr.link)
 
       @page = @flr.pages.find_or_create_by(body: some_page.body, link: some_page.link, number: some_page.number)
 
     end
-    @flr.first_page = @flr.last_page-1
     @flr.save
 
     redirect_to flr_pages_path, notice: 'Pages was successfully added.'
