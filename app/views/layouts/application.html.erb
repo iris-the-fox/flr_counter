@@ -11,6 +11,7 @@
 
   <body>
     <ul class="navbar">
+      <li class="navbar active"><%= link_to("Главная", root_path )  %> </li>
       <li class="navbar"><%= link_to("Текущая ФЛР", flr_path(@current_flr) )  %> </li>
       <li class="navbar "><%= link_to("Все страницы", flr_pages_path(@current_flr) )  %> </li>
       <% if user_signed_in?%>
