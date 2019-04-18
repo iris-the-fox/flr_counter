@@ -16,6 +16,7 @@ class FlrsController < ApplicationController
   # GET /flrs/1
   # GET /flrs/1.json
   def show
+    @groups = @flr.groups
   end
 
   # GET /flrs/new

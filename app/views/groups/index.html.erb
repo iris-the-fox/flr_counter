@@ -1,36 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>ФЛР</th>
-      <th>Номер</th>
-      <th>Название</th>
-      <th>Цвет</th>
-      <th>Куратор</th>
-      <th>Рассказов в группе:</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.flr.number %></td>        
-        <td><%= group.number %></td>
-        <td><%= group.name %></td>
-        <td><%= group.color %></td>
-        <td><%= group.user.email %></td>
-        <td><%= group.stories.count %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'shared_views/groups' %>
+<h1>Группы</h1>
 
 <br>
 
