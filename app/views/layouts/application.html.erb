@@ -13,6 +13,7 @@
     <ul>
       <li><%= link_to("Текущая ФЛР", flr_path(@current_flr) )  %> </li>
       <li><%= link_to("Моя группа", group_path(@my_group) )  %> </li>
+      <li><%= link_to("Все страницы", flr_pages_path(@current_flr) )  %> </li>
 
     </ul>
     <%= render 'layouts/alerts' %>
