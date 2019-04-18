@@ -10,10 +10,18 @@
   </head>
 
   <body>
-    <ul>
-      <li><%= link_to("Текущая ФЛР", flr_path(@current_flr) )  %> </li>
-      <li><%= link_to("Моя группа", group_path(@my_group) )  %> </li>
-      <li><%= link_to("Все страницы", flr_pages_path(@current_flr) )  %> </li>
+    <ul class="navbar">
+      <li class="navbar"><%= link_to("Текущая ФЛР", flr_path(@current_flr) )  %> </li>
+      <li class="navbar "><%= link_to("Все страницы", flr_pages_path(@current_flr) )  %> </li>
+      <% if user_signed_in?%>
+        <% if  @my_group.nil? %>
+          <li class="navbar"><%= link_to("Создать группу", new_flr_group_path(@current_flr) )  %> </li>
+        <% else %>
+          <li class="navbar"><%= link_to("Моя группа", group_path(@my_group) )  %> </li>
+        <% end %>
+      <li class="navbar float-right"><%= link_to("Выйти", destroy_user_session_path, method: :delete) %> </li>
+      <% end %>
+
 
     </ul>
     <%= render 'layouts/alerts' %>

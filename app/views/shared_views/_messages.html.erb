@@ -1,12 +1,13 @@
 <%= button_to 'Разобрать на сообщения', all_messages_page_messages_path(@page), method: :post %>
+<br>
 
 <table>
   <thead>
     <tr>
       <th>№</th>
-      <th>Text</th>
-      <th>Link</th>
-      <th>Author</th>
+      <th>Текст</th>
+      <th>Ссылка на форум</th>
+      <th>Автор отзыва</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +21,7 @@
       <tr>
         <td><%= "#{i}." %></td>
         <td><%= message.body %></td>
-        <td><%= message.link %></td>
+        <td><%= link_to("Ссылка на сообщение", message.link, target: "_blank") %></td>
         <td><%= message.author %></td>
         <td><%= link_to 'Show',  message %></td>
         <td><%= link_to 'Destroy',  message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
