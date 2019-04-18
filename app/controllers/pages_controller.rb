@@ -30,7 +30,7 @@ class PagesController < ApplicationController
       else
        render :new 
       end
-    end
+
   end
 
 
@@ -40,7 +40,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     redirect_to flr_pages_url, notice: 'Page was successfully destroyed.' 
-    end
+
   end
 
   def all_pages

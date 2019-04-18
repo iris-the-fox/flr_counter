@@ -38,7 +38,7 @@ class StoriesController < ApplicationController
       else
         render :new 
       end
-    end
+
   end
 
   # PATCH/PUT /stories/1
@@ -50,7 +50,7 @@ class StoriesController < ApplicationController
       else
         render :edit 
       end
-    end
+
   end
 
   # DELETE /stories/1
@@ -59,8 +59,8 @@ class StoriesController < ApplicationController
     @group = @story.group
     @story.destroy
 
-      redirect_to group_stories_url(@group), notice: 'Story was successfully destroyed.' 
-    end
+    redirect_to group_stories_url(@group), notice: 'Story was successfully destroyed.' 
+
   end
 
 

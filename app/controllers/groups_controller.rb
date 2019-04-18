@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!,except:[:index]
+
   before_action :set_flr, only: [:index, :new, :create]
   before_action :set_group, only: [:show, :edit, :update, :destroy, :show_column]
   before_action :group_owner, only: [:edit, :update, :destroy]
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
       else
          render :new 
       end
-    end
+
   end
 
   # PATCH/PUT /groups/1
@@ -51,15 +51,16 @@ class GroupsController < ApplicationController
       else
        render :edit 
       end
-    end
+
   end
 
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    @flr = @group.flr
     @group.destroy
-    redirect_to groups_url, notice: 'Group was successfully destroyed.' 
-    end
+    redirect_to flr_groups_url(@flr), notice: 'Group was successfully destroyed.' 
+
   end
 
   def show_column

@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
       else
         render :new 
       end
-    end
+
   end
 
   # PATCH/PUT /reviews/1
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
       else
         render :edit 
       end
-    end
+
   end
 
   # DELETE /reviews/1
@@ -56,8 +56,8 @@ class ReviewsController < ApplicationController
     @story = @review.story
     @review.destroy
 
-      redirect_to story_reviews_url(@story), notice: 'Review was successfully destroyed.' 
-    end
+    redirect_to story_reviews_url(@story), notice: 'Review was successfully destroyed.' 
+
   end
 
   private

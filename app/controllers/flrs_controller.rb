@@ -38,7 +38,7 @@ class FlrsController < ApplicationController
       else
        render :new 
       end
-    end
+
   end
 
   # PATCH/PUT /flrs/1
@@ -50,7 +50,7 @@ class FlrsController < ApplicationController
       else
         render :edit
       end
-    end
+
   end
 
   # DELETE /flrs/1
@@ -58,7 +58,7 @@ class FlrsController < ApplicationController
   def destroy
     @flr.destroy
     redirect_to flrs_url, notice: 'Flr was successfully destroyed.' 
-    end
+
   end
 
   def retrieve_last_page
