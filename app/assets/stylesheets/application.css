@@ -78,3 +78,35 @@ li.navbar .active {
   background-color: #4CAF50;
 }
 /* Navbar end */
+/* Forms */
+input, label, textarea {
+    display:block;
+}
+
+textarea {
+  width: 80%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+
+}
+input {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+
+
+div {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
