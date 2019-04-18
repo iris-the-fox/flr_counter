@@ -62,3 +62,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sassc'
 gem "devise", ">= 4.6.0"
 gem 'httparty'
+gem 'jquery-rails'
+gem "cocoon"

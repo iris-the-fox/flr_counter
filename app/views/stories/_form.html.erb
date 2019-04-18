@@ -24,6 +24,9 @@
   <%= form.fields_for :reviews do |review| %>
     <%= render 'review_fields', :f => review %>
   <% end %>
+  <div class='links'>
+    <%= link_to_add_association 'Добавить отзыв', form, :reviews %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

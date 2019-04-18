@@ -78,6 +78,7 @@ li.navbar .active {
   background-color: #4CAF50;
 }
 /* Navbar end */
+
 /* Forms */
 input, label, textarea {
     display:block;
@@ -105,8 +106,8 @@ input {
 
 }
 
-
 div {
   background-color: #f2f2f2;
   padding: 10px;
 }
+/* Forms end */
