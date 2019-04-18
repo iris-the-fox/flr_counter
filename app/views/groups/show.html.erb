@@ -15,8 +15,12 @@
   <strong>Цвет:</strong>
   <%= @group.color %>
 </p>
+<%= link_to 'Редактировать', edit_group_path(@group) %> |
+<%= link_to 'Посмотреть все группы', flr_groups_path(@group.flr) %> |
+<%= link_to 'Добавить рассказ', new_group_story_path(@group) %>
+<br>
+<br>
 
 <%= render 'shared_views/stories' %>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', flr_groups_path(@group.flr) %>
+

@@ -15,7 +15,10 @@
   <%= "Группа № #{@story.group.number} - #{@story.group.color} (#{@story.group.name})" %>
 </p>
 
+<%= link_to 'Редактировать рассказ/отзывы', edit_story_path(@story) %> |
+<%= link_to 'Назад к списку рассказов', group_path(@story.group) %> |
+<%= link_to 'Добавить отзыв', new_story_review_path(@story) %>
+<br>
+<br>
 <%= render 'shared_views/reviews' %>
 
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', group_stories_path(@story.group) %>
