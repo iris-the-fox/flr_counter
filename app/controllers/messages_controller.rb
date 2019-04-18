@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
       @message = @page.messages.create(body: review.body, link: review.link, author: review.author)
     end
 
-    redirect_to page_messages_path(@page), notice: 'Messages was successfully created.'
+    redirect_to page_path(@page), notice: 'Messages was successfully created.'
 
   end
 

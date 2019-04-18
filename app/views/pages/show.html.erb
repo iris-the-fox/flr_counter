@@ -1,19 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @page.body %>
-</p>
+<%= link_to("Ссылка на страницу № #{@page.number} на форуме", @page.link, target: "_blank") %>
 
 <p>
-  <strong>Number:</strong>
-  <%= @page.number %>
-</p>
-
-<p>
-  <strong>Flr:</strong>
-  <%= @page.flr %>
+  <strong>Сообщений на странице:</strong>
+  <%= @page.messages.count %>
 </p>
 
 
 
+<%= render 'shared_views/messages' %>
