@@ -18,6 +18,7 @@
           <li class="navbar"><%= link_to("Создать группу", new_flr_group_path(@current_flr) )  %> </li>
         <% else %>
           <li class="navbar"><%= link_to("Моя группа", group_path(@my_group) )  %> </li>
+          <li class="navbar"><%= link_to("Посмотреть колонку", show_column_group_path(@group)) %> </li>
         <% end %>
       <li class="navbar float-right"><%= link_to("Выйти", destroy_user_session_path, method: :delete) %> </li>
       <% end %>
