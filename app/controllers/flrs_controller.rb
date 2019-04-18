@@ -32,14 +32,11 @@ class FlrsController < ApplicationController
   # POST /flrs.json
   def create
     @flr = Flr.new(flr_params)
-
-    respond_to do |format|
+  
       if @flr.save
-        format.html { redirect_to @flr, notice: 'Flr was successfully created.' }
-        format.json { render :show, status: :created, location: @flr }
+        redirect_to @flr, notice: 'Flr was successfully created.' 
       else
-        format.html { render :new }
-        format.json { render json: @flr.errors, status: :unprocessable_entity }
+       render :new 
       end
     end
   end
@@ -47,13 +44,11 @@ class FlrsController < ApplicationController
   # PATCH/PUT /flrs/1
   # PATCH/PUT /flrs/1.json
   def update
-    respond_to do |format|
+
       if @flr.update(flr_params)
-        format.html { redirect_to @flr, notice: 'Flr was successfully updated.' }
-        format.json { render :show, status: :ok, location: @flr }
+        redirect_to @flr, notice: 'Flr was successfully updated.' 
       else
-        format.html { render :edit }
-        format.json { render json: @flr.errors, status: :unprocessable_entity }
+        render :edit
       end
     end
   end
@@ -62,9 +57,7 @@ class FlrsController < ApplicationController
   # DELETE /flrs/1.json
   def destroy
     @flr.destroy
-    respond_to do |format|
-      format.html { redirect_to flrs_url, notice: 'Flr was successfully destroyed.' }
-      format.json { head :no_content }
+    redirect_to flrs_url, notice: 'Flr was successfully destroyed.' 
     end
   end
 

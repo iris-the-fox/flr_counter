@@ -33,13 +33,11 @@ class GroupsController < ApplicationController
 
     @group = @flr.groups.new(group_params)
 
-    respond_to do |format|
+
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
+        redirect_to @group, notice: 'Group was successfully created.' 
       else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+         render :new 
       end
     end
   end
@@ -47,13 +45,11 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-    respond_to do |format|
+
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { render :show, status: :ok, location: @group }
+       redirect_to @group, notice: 'Group was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+       render :edit 
       end
     end
   end
@@ -62,9 +58,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
+    redirect_to groups_url, notice: 'Group was successfully destroyed.' 
     end
   end
 

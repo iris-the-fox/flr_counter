@@ -24,13 +24,11 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
 
-    respond_to do |format|
+
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
-        format.json { render :show, status: :created, location: @page }
+       redirect_to @page, notice: 'Page was successfully created.' 
       else
-        format.html { render :new }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
+       render :new 
       end
     end
   end
@@ -41,9 +39,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1.json
   def destroy
     @page.destroy
-    respond_to do |format|
-      format.html { redirect_to flr_pages_url, notice: 'Page was successfully destroyed.' }
-      format.json { head :no_content }
+    redirect_to flr_pages_url, notice: 'Page was successfully destroyed.' 
     end
   end
 

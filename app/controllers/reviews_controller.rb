@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-
   before_action :set_story, only: [:index, :new, :create]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :group_owner, only:  [:new, :create]
@@ -30,13 +29,11 @@ class ReviewsController < ApplicationController
   def create
     @review = @story.reviews.new(review_params)
 
-    respond_to do |format|
+
       if @review.save
-        format.html { redirect_to  @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
+        redirect_to  @review, notice: 'Review was successfully created.' 
       else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        render :new 
       end
     end
   end
@@ -44,13 +41,11 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    respond_to do |format|
+
       if @review.update(review_params)
-        format.html { redirect_to  @review, notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
+        redirect_to  @review, notice: 'Review was successfully updated.' 
       else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        render :edit 
       end
     end
   end
@@ -60,9 +55,8 @@ class ReviewsController < ApplicationController
   def destroy
     @story = @review.story
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to story_reviews_url(@story), notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
+
+      redirect_to story_reviews_url(@story), notice: 'Review was successfully destroyed.' 
     end
   end
 
