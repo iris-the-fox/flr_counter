@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :story_id, :value => @review.story.id %>
-   <%= form.hidden_field :group_id, :value => @review.story.group.id %>
+  <%= form.hidden_field :story_id, :value => @story.id %>
+  <%= form.hidden_field :group_id, :value => @story.group.id %>
 
   <div class="field">
     <%= form.label :text %>
