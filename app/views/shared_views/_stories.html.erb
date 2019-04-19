@@ -18,9 +18,9 @@
         <td><%= story.name %></td>
         <td><%= story.link %></td>
         <td><%= story.reviews.count %></td>        
-        <td><%= link_to 'Show', [story] %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
-        <td><%= link_to 'Destroy', [story], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Посмотреть', [story] %></td>
+        <td><%= link_to 'Редактировать', edit_story_path(story) %></td>
+        <td><%= link_to 'Удалить', [story], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

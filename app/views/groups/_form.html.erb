@@ -30,11 +30,11 @@
   </div>
   <div class="field">
     <%= form.label :motivation_text %>
-    <%= form.text_area :mot_text %>
+    <%= form.text_area :mot_text, placeholder: 'текст, который будет отображаться в колонке под названием' %>
   </div>
   <div class="field">
     <%= form.label :all_stories %>
-    <%= form.text_area :all_stories %>
+    <%= form.text_area :all_stories, placeholder: 'весь список рассказов из колонки с рапределением по группам. программа сама разделит, но можно будет добавлять по одному, если не сработает' %>
   </div>
 
   <div class="actions">
