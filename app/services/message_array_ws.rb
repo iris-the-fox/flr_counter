@@ -9,7 +9,7 @@ class MessageArrayWS
       doc = Nokogiri::HTML(page_body)
       body = doc.xpath('/html/body')
       content = body.css('.layout .middle .main-container .content')
-      forum = content.xpath("table[3]")
+      forum = content.xpath("table[4]")
       @review_arr = Set[]
       forum.xpath("tr").each do |row|
         review = MessageWS.new(row)
