@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_my_group
-    if user_signed_in?
+    if user_signed_in? && @current_flr
       @my_group = @current_flr.groups.find_by(user_id: current_user.id)
     end
   	
