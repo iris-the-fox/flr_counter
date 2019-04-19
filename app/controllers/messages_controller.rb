@@ -17,7 +17,9 @@ class MessagesController < ApplicationController
   def all_messages
     set = MessageArrayWS.new(@page.body).review_arr
     set.each do |review|
-      @message = @page.messages.create(body: review.body, link: review.link, author: review.author)
+      @message = @page.messages.new(body: review.body, link: review.link, author: review.author)
+      @message.save
+
     end
 
     redirect_to page_path(@page), notice: 'Messages was successfully created.'

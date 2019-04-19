@@ -12,6 +12,7 @@
   <% end %>
 
   <%= form.hidden_field :story_id, :value => @review.story.id %>
+   <%= form.hidden_field :group_id, :value => @review.story.group.id %>
 
   <div class="field">
     <%= form.label :text %>

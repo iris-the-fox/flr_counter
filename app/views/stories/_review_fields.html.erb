@@ -1,5 +1,7 @@
 
 <div class='nested-fields'>
+  <h3>Отзыв</h3>
+  <%= f.hidden_field :group_id, :value => @story.group.id %>
   <div class="field">
     <%= f.label :text %>
     <%= f.text_area :text %>
