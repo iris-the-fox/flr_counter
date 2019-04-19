@@ -12,7 +12,7 @@
       <th>№</th>
       <th>Body</th>
       <th>Ссылка на страницу на форуме</th>
-      <th>Сообщений на странице</th>      
+      <th class="counter">Сообщений на странице</th>      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,9 +23,9 @@
         <td><%= page.number %></td>
         <td><%= page.body[700..900] %></td>
         <td><%= link_to("Ссылка на страницу № #{page.number} ", page.link, target: "_blank") %></td>
-        <td><%= page.messages.count %></td>
+        <td class="counter"><%= page.messages.count %></td>
         <td><%= link_to 'Посмотреть все сообщения', page %></td>
-        <td><%= button_to 'Разобрать на сообщения', all_messages_page_messages_path(page), method: :post %></td>
+        <td><%= link_to 'Разобрать на сообщения', all_messages_page_messages_path(page), method: :post, class: "button" %></td>
         <td><%= link_to 'Удалить', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

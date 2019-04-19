@@ -35,7 +35,6 @@ td, th {
 
 table tr:nth-child(even){background-color: #f2f2f2;}
 
-table tr:hover {background-color: #ddd;}
 
 table th {
   padding-top: 12px;
@@ -44,6 +43,10 @@ table th {
   background-color:  #75b0d7;
   color: white;
 }
+table th.counter, td.counter {
+  max-width: 80px;
+}
+
 /* Table end */
 
 /* Navbar */
@@ -115,3 +118,18 @@ div.nested-fields {
   border-radius: 4px;
 }
 /* Forms end */
+
+.button {
+  background-color: #f2f2f2; 
+  padding: 5px; 
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+
+}
+
+.button:hover {background-color: #ddd;}

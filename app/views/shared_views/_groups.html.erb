@@ -6,7 +6,7 @@
       <th>Название</th>
       <th>Цвет</th>
       <th>Куратор</th>
-      <th>Рассказов в группе:</th>
+      <th class="counter">Рассказов в группе:</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
         <td><%= group.name %></td>
         <td><%= group.color %></td>
         <td><%= group.user.email %></td>
-        <td><%= group.stories.count %></td>
+        <td class="counter"><%= group.stories.count %></td>
         <td><%= link_to 'Посмотреть', group %></td>
         <td><%= link_to 'Редактировать', edit_group_path(group) %></td>
         <td><%= link_to 'Удалить', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
