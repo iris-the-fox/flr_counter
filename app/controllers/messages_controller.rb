@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class MessagesController < ApplicationController
-  before_action :set_page, only: %i[index, new, all_messages]
-	before_action :set_message, only: %i[show, destroy]
+  before_action :set_page, only: %i[index new all_messages]
+  before_action :set_message, only: %i[show destroy]
 
   def index
     @messages = @page.messages.order(:link)
   end
 
-  def show
-  end
+  def show; end
 
   def new
-  	@message = @page.messages.new
+    @message = @page.messages.new
   end
 
   def all_messages
@@ -25,23 +26,21 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-  	@message.destroy
-    redirect_to page_messages_url, notice: 'Msg was successfully destroyed.' 
+    @message.destroy
+    redirect_to page_messages_url, notice: 'Msg was successfully destroyed.'
   end
- 
 
   private
 
   def set_page
-  	@page = Page.find(params[:page_id])
+    @page = Page.find(params[:page_id])
   end
-  
+
   def set_message
     @message = Message.find(params[:id])
   end
-  
+
   def message_params
     params.require(:message).permit(:body, :link, :author, :page_id)
   end
-
 end
