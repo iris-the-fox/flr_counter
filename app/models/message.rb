@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Message < ApplicationRecord
   belongs_to :page
   validates_uniqueness_of :body
