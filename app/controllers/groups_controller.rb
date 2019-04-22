@@ -1,9 +1,7 @@
 class GroupsController < ApplicationController
-
-  before_action :set_flr, only: [:index, :new, :create]
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :show_column]
-  before_action :group_owner, only: [:edit, :update, :destroy]
-                   
+  before_action :set_flr, only: %i[index new create]
+  before_action :set_group, only: %i[show edit update destroy show_column]
+  before_action :group_owner, only: %i[edit update destroy]
 
   # GET /groups
   # GET /groups.json
@@ -30,28 +28,22 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-
     @group = @flr.groups.new(group_params)
-
-
-      if @group.save
-        redirect_to @group, notice: 'Group was successfully created.' 
-      else
-         render :new 
-      end
-
+    if @group.save
+      redirect_to @group, notice: 'Group was successfully created.' 
+    else
+       render :new 
+    end
   end
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-
-      if @group.update(group_params)
-       redirect_to @group, notice: 'Group was successfully updated.'
-      else
-       render :edit 
-      end
-
+    if @group.update(group_params)
+     redirect_to @group, notice: 'Group was successfully updated.'
+    else
+     render :edit 
+    end
   end
 
   # DELETE /groups/1
@@ -60,7 +52,6 @@ class GroupsController < ApplicationController
     @flr = @group.flr
     @group.destroy
     redirect_to flr_groups_url(@flr), notice: 'Group was successfully destroyed.' 
-
   end
 
   def show_column
@@ -85,10 +76,9 @@ class GroupsController < ApplicationController
     end
 
     def group_owner
-     unless @group.user_id == current_user.id
-      flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
-      redirect_to groups_path
-     end
+      unless @group.user_id == current_user.id
+        flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
+        redirect_to groups_path
+      end
     end
-
 end

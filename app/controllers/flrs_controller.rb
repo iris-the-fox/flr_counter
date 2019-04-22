@@ -1,11 +1,9 @@
 class FlrsController < ApplicationController
   before_action :authenticate_user!
-  before_action do 
+  before_action do
     redirect_to new_user_session_path unless current_user && current_user.admin?
   end
-  before_action :set_flr, only: [:show, :edit, :update, :destroy, :retrieve_pages]
-
-
+  before_action :set_flr, only: %i[show edit update destroy retrieve_pages]
 
   # GET /flrs
   # GET /flrs.json
@@ -32,25 +30,22 @@ class FlrsController < ApplicationController
   # POST /flrs.json
   def create
     @flr = Flr.new(flr_params)
-  
-      if @flr.save
-        redirect_to @flr, notice: 'Flr was successfully created.' 
-      else
-       render :new 
-      end
+    if @flr.save
+      redirect_to @flr, notice: 'Flr was successfully created.' 
+    else
+     render :new 
+    end
 
   end
 
   # PATCH/PUT /flrs/1
   # PATCH/PUT /flrs/1.json
   def update
-
-      if @flr.update(flr_params)
-        redirect_to @flr, notice: 'Flr was successfully updated.' 
-      else
-        render :edit
-      end
-
+    if @flr.update(flr_params)
+      redirect_to @flr, notice: 'Flr was successfully updated.' 
+    else
+      render :edit
+    end
   end
 
   # DELETE /flrs/1
@@ -58,7 +53,6 @@ class FlrsController < ApplicationController
   def destroy
     @flr.destroy
     redirect_to flrs_url, notice: 'Flr was successfully destroyed.' 
-
   end
 
   def retrieve_last_page
@@ -66,7 +60,6 @@ class FlrsController < ApplicationController
     @flr.last_page = Forum_pages.new(@flr.link).last_page
     @flr.save
     redirect_to @flr, notice: 'Last page was successfully added.'
-
   end
 
   private
