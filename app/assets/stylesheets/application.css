@@ -117,6 +117,9 @@ div.nested-fields {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+#submit-story {
+  background-color: #3178a8;
+}
 /* Forms end */
 
 .button {

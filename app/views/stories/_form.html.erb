@@ -20,6 +20,10 @@
     <%= form.label :link %>
     <%= form.text_field :link %>
   </div>
+   <div class="actions">
+    <%= form.submit "Сохранить изменения", id: 'submit-story' %>
+  </div>
+
   <div class='links'>
     <%= link_to_add_association 'Добавить отзыв', form, :reviews, data: {"association-insertion-method" => :after} %>
   </div>
@@ -29,7 +33,5 @@
   <% end %>
 
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
 <% end %>
