@@ -56,7 +56,8 @@ class GroupsController < ApplicationController
 
   def show_column
     @exept_general = @group.stories.where(general: false)
-    general = @group.stories.find_by(general: true) ? @general_reviews = general.reviews : @general_reviews ={}
+    general = @group.stories.find_by(general: true)
+    general.nil? ?  @general_reviews = {} : @general_reviews = general.reviews
     render '/groups/column.text.erb', layout: false, content_type: 'text/plain'
   end
 
