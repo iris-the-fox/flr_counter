@@ -11,15 +11,22 @@
 [*][LINK=#r<%= i %>]<%= i %>. <%= s.name %> [/link] – количество отзывов: <%= s.reviews.count %>
 <% end %>
 
-Всего отзывов: <%= @group.reviews.count %>
-
+Всего отзывов: <%= @group.reviews.count - @general.reviews.count %>
 
 [cut=]
 <p class=abzac><div class='t2'> </div></p>
+
 Наши чемпионы:
-<% author_count(@group).each do |a, c| %>
-<%= a %> - <%= grammatical_case(c) %>
+<% author_count.sort_by { |_a, c| c }.reverse.each do |a, c| %>
+<%= a %> - <%= grammatical_case(c) %>  <%= general_review.has_key?(a) ? '(+1 общий)' : nil %>
 <% end %>
+
+<% general_review.each do |a,c| %>
+<% if author_count.has_key?(a) %>
+<% else  %>
+<%= a %> - 1 общий 
+<% end  %>
+<% end  %>
 
 <p class=abzac><div class='t2'> </div></p>
 

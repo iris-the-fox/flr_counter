@@ -12,35 +12,35 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :current %>
-    <%= form.check_box :current, class: 'form-control' %>
+    <%= form.label :current, class: 'check_box' %>
+    <%= form.check_box :current, class: 'check_box' %>
   </div>
 
   <div class="form-group">
     <%= form.label :info %>
-    <%= form.text_field :info, class: 'form-control' %>
+    <%= form.text_field :info %>
   </div>
 
   <div class="form-group">
     <%= form.label :first_page %>
-    <%= form.number_field :first_page, class: 'form-control' %>
+    <%= form.number_field :first_page %>
   </div>
 
   <div class="form-group">
     <%= form.label :last_page %>
-    <%= form.number_field :last_page, class: 'form-control' %>
+    <%= form.number_field :last_page %>
   </div>
 
 
   <div class="form-group">
     <%= form.label :link %>
-    <%= form.text_field :link, class: 'form-control' %>
+    <%= form.text_field :link %>
   </div>
 
 
   <div class="form-group">
     <%= form.label :number %>
-    <%= form.number_field :number, class: 'form-control', :step => 0.5 %>
+    <%= form.number_field :number, :step => 0.5 %>
   </div>
   <div class="actions">
     <%= form.submit %>

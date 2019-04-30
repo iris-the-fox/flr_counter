@@ -120,6 +120,11 @@ div.nested-fields {
 #submit-story {
   background-color: #3178a8;
 }
+.check_box {
+    width: 10%;
+    display: inline-block;
+    vertical-align: middle;
+}
 /* Forms end */
 
 .button {

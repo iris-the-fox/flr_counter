@@ -77,6 +77,6 @@ class StoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def story_params
-    params.require(:story).permit(:name, :link, :group_id, reviews_attributes: Review.attribute_names.map(&:to_sym).push(:_destroy))
+    params.require(:story).permit(:name, :link, :general, :group_id, reviews_attributes: Review.attribute_names.map(&:to_sym).push(:_destroy))
   end
 end

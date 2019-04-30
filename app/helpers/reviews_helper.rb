@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module ReviewsHelper
-  def author_count(group)
-    Hash[group.reviews.pluck(:author).group_by { |x| x }.map { |k, v| [k, v.count] }].sort_by { |_a, c| c }.reverse
+  def general_review
+    Hash[@general.reviews.pluck(:author).group_by { |x| x }.map { |k, v| [k, v.count] }] 
   end
 
   def grammatical_case(count)
