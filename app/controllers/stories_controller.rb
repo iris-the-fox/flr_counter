@@ -25,7 +25,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
-    @story.reviews.build
+    #@story.reviews.build
   end
 
   # POST /stories

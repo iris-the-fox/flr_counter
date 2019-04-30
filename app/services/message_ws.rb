@@ -5,9 +5,9 @@ class MessageWS
 
   def initialize(row)
     body = row.xpath('td/table/tr/td/table/tr/td/div/font').text
-    @body = body.delete("\n").delete("\r").delete(' ') # текст
+    @body = body.delete("\n").delete("\r").delete(' ').delete('"').delete('\\') # текст
     @author = row.xpath('td/span/a/b').text # ник
     link = row.xpath('td/table/tr/td/span/a[1]/@href').text
-    @link.delete('"') # ссылка
+    @link = link.delete('"') # ссылка
   end
 end

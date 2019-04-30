@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   def destroy
     @story = @review.story
     @review.destroy
-    redirect_to story_reviews_url(@story), notice: 'Review was successfully destroyed.'
+    redirect_to story_url(@story), notice: 'Review was successfully destroyed.'
   end
 
   private
