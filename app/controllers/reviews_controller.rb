@@ -21,7 +21,9 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1/edit
-  def edit; end
+  def edit
+    @story = @review.story
+  end
 
   # POST /reviews
   # POST /reviews.json
