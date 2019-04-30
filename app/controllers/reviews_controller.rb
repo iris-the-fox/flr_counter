@@ -18,11 +18,13 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = @story.reviews.new
+    @path = [@story, @review]
   end
 
   # GET /reviews/1/edit
   def edit
     @story = @review.story
+    @path = @review
   end
 
   # POST /reviews
