@@ -17,6 +17,8 @@
 * {
 	font-family: Verdana, Arial;
 	font-size: 12px;
+  box-sizing: border-box;
+
 }
 
 /* Table */
@@ -91,7 +93,7 @@ textarea {
   width: 80%;
   height: 100px;
   padding: 12px 20px;
-  box-sizing: border-box;
+ 
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -105,7 +107,7 @@ input {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+ 
 
 }
 
@@ -119,11 +121,22 @@ div.nested-fields {
 }
 #submit-story {
   background-color: #3178a8;
+  color: white;
 }
 .check_box {
-    width: 10%;
-    display: inline-block;
-    vertical-align: middle;
+  width: 10%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.add_review {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: #c45e24;
+    border-radius: 4px;
+  width: 25%;
 }
 /* Forms end */
 
@@ -134,7 +147,7 @@ div.nested-fields {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+ 
   text-decoration: none;
   color: black;
 

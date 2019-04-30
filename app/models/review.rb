@@ -10,6 +10,7 @@ class Review < ApplicationRecord
   private
 
   def add_link_and_author
+    if text.present?
     text = clean_text(self.text)
     text = delete_smiles(text)
     puts text
@@ -17,5 +18,6 @@ class Review < ApplicationRecord
     msg = Review_finder.new(text)
     self.link = msg.link
     self.author = msg.author
+  end
   end
 end

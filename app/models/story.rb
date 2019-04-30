@@ -7,5 +7,6 @@ class Story < ApplicationRecord
   validates :name, uniqueness: { scope: :group_id,
                                  message: ': Рассказ с таким названием уже существует' }
   has_many :reviews, dependent: :destroy
-  accepts_nested_attributes_for :reviews, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :reviews, reject_if: ->(review){ review['text'].blank? }, allow_destroy: true
+
 end
