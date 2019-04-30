@@ -29,6 +29,10 @@
     <%= form.text_field :color %>
   </div>
   <div class="field">
+    <%= form.label :last_update %>
+    <%= form.text_area :last_update, placeholder: 'Последний раз колонка была обновлена...' %>
+  </div>
+  <div class="field">
     <%= form.label :motivation_text %>
     <%= form.text_area :mot_text, placeholder: 'текст, который будет отображаться в колонке под названием' %>
   </div>

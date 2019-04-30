@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_093827) do
+ActiveRecord::Schema.define(version: 2019_04_30_102035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_093827) do
     t.bigint "flr_id"
     t.bigint "user_id"
     t.text "mot_text"
+    t.string "last_update"
     t.index ["flr_id"], name: "index_groups_on_flr_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
