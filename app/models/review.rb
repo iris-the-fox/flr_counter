@@ -10,7 +10,7 @@ class Review < ApplicationRecord
   private
 
   def add_link_and_author
-    text = self.text.delete("\n").delete("\r").delete(' ').delete('"').delete('\\')
+    text = clean_text(self.text)
     text = delete_smiles(text)
     puts text
     puts '==='

@@ -26,8 +26,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    @page = @message.page
     @message.destroy
-    redirect_to page_messages_url, notice: 'Msg was successfully destroyed.'
+    redirect_to page_messages_url(@page), notice: 'Msg was successfully destroyed.'
   end
 
   private
