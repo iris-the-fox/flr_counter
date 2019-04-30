@@ -11,7 +11,7 @@
 [*][LINK=#r<%= i %>]<%= i %>. <%= s.name %> [/link] – количество отзывов: <%= s.reviews.count %>
 <% end %>
 
-Всего отзывов: <%= @group.reviews.count - @general.reviews.count %>
+Всего отзывов: <%= @group.reviews.count - @general_reviews.count %>
 
 [cut=]
 <p class=abzac><div class='t2'> </div></p>
@@ -40,6 +40,7 @@
 <% i+=1 %>
 <%= i %>. [URL=<%= r.link %>]<%= r.author %>[/URL]
 <%= r.text %>
+<p class=abzac><div class='t2'> </div></p>
 <% end  %>
 <% end  %>
 [/cut]

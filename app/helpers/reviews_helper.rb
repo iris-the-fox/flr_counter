@@ -2,7 +2,11 @@
 
 module ReviewsHelper
   def general_review
-    Hash[@general.reviews.pluck(:author).group_by { |x| x }.map { |k, v| [k, v.count] }] 
+    if @general.nil?
+      {''=>''}
+    else
+    Hash[@general_reviews.pluck(:author).group_by { |x| x }.map { |k, v| [k, v.count] }] 
+  end
   end
 
   def grammatical_case(count)
