@@ -130,8 +130,6 @@ input {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
- 
-
 }
 
 div {
@@ -164,6 +162,11 @@ div.nested-fields {
 .review-text {
   border: 1px solid #ccc;
   background-color: white;
+  border-radius: 4px;
+}
+
+.field_with_errors{
+  border: 1px solid red;
   border-radius: 4px;
 }
 /* Forms end */
