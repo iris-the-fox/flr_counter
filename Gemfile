@@ -65,3 +65,4 @@ gem 'httparty'
 gem 'jquery-rails'
 gem "cocoon"
 gem 'active_link_to'
+gem 'rails-i18n'
