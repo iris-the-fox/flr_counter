@@ -17,7 +17,8 @@ class MessagesController < ApplicationController
   def all_messages
     set = MessageArrayWS.new(@page.body).review_arr
     set.each do |review|
-      @message = @page.messages.new(body: review.body,
+      @message = @page.messages.new(raw_body: review.raw_body,
+                                    body: review.body,
                                     link: review.link,
                                     author: review.author)
       @message.save
@@ -42,6 +43,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body, :link, :author, :page_id)
+    params.require(:message).permit(:raw_boty, :body, :link, :author, :page_id)
   end
 end

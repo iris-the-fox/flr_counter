@@ -2,9 +2,10 @@
 
 class Review_finder
 
-  attr_accessor :link, :author
+  attr_accessor :msg, :link, :author
   def initialize(shred)
-    msg = Message.find_by('body like ?', "%#{shred}%")
+    @msg = Message.find_by('body like ?', "%#{shred}%")
+    puts @msg
     if msg
       @link = msg.link
       @author = msg.author

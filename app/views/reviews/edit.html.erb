@@ -1,6 +1,11 @@
-<h1>Editing Review</h1>
-
+<h1>Редактировать отзыв</h1>
+<div>
+<h2>Текст с тегами и смайлами</h2>
+  <div class="review-text ">
+    <%= @review.try(:message).try(:raw_body) %>
+  </div>
+</div>
 <%= render 'form', review: @review %>
 
-<%= link_to 'Show', @review %> |
-<%= link_to 'Back', story_path(@review.story) %>
+<%= link_to 'Посмотреть', @review %> |
+<%= link_to 'Назад', story_path(@review.story) %>
