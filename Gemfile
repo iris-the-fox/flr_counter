@@ -64,3 +64,4 @@ gem "devise", ">= 4.6.0"
 gem 'httparty'
 gem 'jquery-rails'
 gem "cocoon"
+gem 'active_link_to'

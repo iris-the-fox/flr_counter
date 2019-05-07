@@ -102,7 +102,7 @@ li.navbar a:hover:not(.active) {
   background-color: #111;
 }
 
-li.navbar.active {
+li a.active {
   background-color: #4CAF50;
 }
 /* Navbar end */
