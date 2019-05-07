@@ -1,20 +1,20 @@
 
-<h1><%= "КУРАТОР: " + @group.user.email %></h1>
-<%= link_to("Посмотреть колонку", show_column_group_path(@group)) %> 
-<h2><%= "ФЛР: " + @group.flr.number.to_s %></h2>
+<h1><%= @group.name %></h1>
+
 <p><strong>Группа номер:</strong>
   <%= @group.number %>
 </p>
-
-<p>
-  <strong>Название:</strong>
-  <%= @group.name %>
-</p>
-
 <p>
   <strong>Цвет:</strong>
   <%= @group.color %>
 </p>
+<p>
+  <strong>Куратор:</strong>
+  <%= @group.user.email %>
+</p>
+<%= link_to "Посмотреть колонку", show_column_group_path(@group) , class: "button-like show-column" %> 
+<h2><%= "ФЛР: " + @group.flr.number.to_s %></h2>
+
 <%= link_to 'Редактировать', edit_group_path(@group) %> |
 <%= link_to 'Добавить рассказ', new_group_story_path(@group) %>
 <br>

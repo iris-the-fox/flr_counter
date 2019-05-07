@@ -29,6 +29,21 @@ h2 {
   font-size: 1.5em;
 }
 
+.button-like {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 25%;
+  text-decoration: none;
+  text-align: center;
+}
+.show-column {
+  background-color: #3178a8;
+  color: white;
+}
+
 /* Table */
 table {
   border-collapse: collapse;
@@ -137,15 +152,15 @@ div.nested-fields {
   vertical-align: middle;
 }
 
-.add_review {
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+.add-review {
   background-color: #c45e24;
-  border-radius: 4px;
-  width: 25%;
+  color: black;
 }
+.delete-review {
+  background-color: #c40e04;
+  color: black;
+}
+
 .review-text {
   border: 1px solid #ccc;
   background-color: white;

@@ -1,17 +1,13 @@
-<p>
-  <strong>Name:</strong>
-  <%= @story.name %>
-</p>
-
-<p>
-  <strong>Link:</strong>
-  <%= @story.link %>
-</p>
+<h1><%= @story.name %></h1>
 
 <p>
   <strong>Группа:</strong>
   <%= "Группа № #{@story.group.number} - #{@story.group.color} (#{@story.group.name})" %>
 </p>
+<p>
+	<%= grammatical_case(@story.reviews.count) %> 
+</p>
+
 
 <%= link_to 'Редактировать рассказ/отзывы', edit_story_path(@story) %> |
 <%= link_to 'Назад к списку рассказов', group_path(@story.group) %> |
