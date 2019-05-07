@@ -8,9 +8,6 @@
 <%= link_to 'Edit', edit_flr_path(@flr) %> |
 <%= link_to 'Back', flrs_path %>
 
-
-<%= button_to [:retrieve_last_page, @flr] do %>
-Последняя страница на форуме ФЛР <%= @flr.number %>
-<% end %>
-
+<br>
+<%= link_to "Последняя страница на форуме ФЛР #{@flr.number}", [:retrieve_last_page, @flr], method: :post, class: "button-like show-column" %> 
 <%= render 'shared_views/groups' %>
