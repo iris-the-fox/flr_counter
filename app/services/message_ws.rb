@@ -5,7 +5,7 @@ class MessageWS
   attr_accessor :raw_body, :body, :link, :author
 
   def initialize(row)
-  	@raw_body = row.xpath('td/table/tr/td/table/tr/td/div/font')
+  	@raw_body = row.css('font.v9b').children
   	@body = clean_text(@raw_body.text) # текст
     @author = row.xpath('td/span/a/b').text # ник
     link = row.xpath('td/table/tr/td/span/a[1]/@href').text
