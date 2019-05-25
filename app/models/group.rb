@@ -12,6 +12,9 @@ class Group < ApplicationRecord
 
   belongs_to :user
   has_many :stories, dependent: :destroy
+  before_save :all_stories_save, if: :new_record?
+
+
 
   accepts_nested_attributes_for :stories, reject_if: :all_blank
 
@@ -22,10 +25,19 @@ class Group < ApplicationRecord
   end
 
   def all_stories=(names)
-    self.stories = []
+    @stories = []
     names.split("\r\n\r\n").map do |name|
-      story = Story.create!(name: name.strip)
-      stories << story
+      story_name = Story.find_or_create_by(name: name.strip)
+     @stories << name
     end
   end
+
+  def all_stories_save
+    self.stories = []
+    @stories.map do |name|
+      story = Story.find_or_create_by(name: name.strip)
+      self.stories << story
+    end
+  end
+
 end

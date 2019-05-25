@@ -75,8 +75,7 @@ class GroupsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def group_params
-    params.require(:group).
-           permit(:number, :name, :color, :flr_id, :user_id, :all_stories, :mot_text, :last_update)
+    params.require(:group).permit(:number, :name, :color, :flr_id, :user_id, :all_stories, :mot_text, :last_update)
   end
 
   def group_owner
