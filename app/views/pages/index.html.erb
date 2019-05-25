@@ -23,7 +23,9 @@
         <td><%= page.number %></td>
         <td><%= page.body[700..900] %></td>
         <td><%= link_to("Ссылка на страницу № #{page.number} ", page.link, target: "_blank") %></td>
-        <td class="counter"><%= page.messages.count %></td>
+        <td class="counter"><%= page.messages.count %>
+          <%= link_to 'Обновить страницу', update_full_page_page_path(page), method: :post, class: "button" %>
+        </td>
         <td><%= link_to 'Посмотреть все сообщения', page %></td>
         <td><%= link_to 'Разобрать на сообщения', all_messages_page_messages_path(page), method: :post, class: "button" %></td>
         <td><%= link_to 'Удалить', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>

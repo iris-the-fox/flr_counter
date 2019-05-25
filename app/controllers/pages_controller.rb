@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   before_action :set_flr, only: %i[index new create all_pages]
-  before_action :set_page, only: %i[show edit update destroy]
+  before_action :set_page, only: %i[show edit update destroy update_full_page]
 
   # GET /pages
   # GET /pages.json
@@ -49,6 +49,14 @@ class PagesController < ApplicationController
     @flr.save
     redirect_to flr_pages_path, notice: 'Pages was successfully added.'
   end
+
+  def update_full_page
+    @flr = @page.flr
+    updated_page = PageWS.new(@page.number, @flr.link)
+    @page = @flr.pages.find(@page.id).update(body: updated_page.body)
+    redirect_to flr_pages_path(@flr), notice: 'Pages was successfully updated.'
+  end
+
 
   private
 

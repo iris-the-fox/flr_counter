@@ -12,6 +12,9 @@ Rails.application.routes.draw do
         collection do
           post "all_pages"
         end
+        member do
+          post "update_full_page"
+        end
         resources :messages do
           collection do
             post "all_messages"
