@@ -8,10 +8,12 @@
 
 <% @group.stories.each_with_index do |s, i| %>
 <% i+=1 %>
-[*][LINK=#r<%= i %>]<%= i %>. <%= s.name %> [/link] – количество отзывов: <%= s.reviews.count %>
+[LINK=#r<%= i %>]<%= i %>. <%= s.name %> [/link] – количество отзывов: <%= s.reviews.count %>
 <% end %>
 
-Всего отзывов: <%= @group.reviews.count - @general_reviews.count %>
+
+Всего отзывов: <%= @group.reviews.count - @general_reviews.count %>. 
+Общих: <%=  @general_reviews.count %>
 
 [cut=]
 <p class=abzac><div class='t2'> </div></p>
@@ -22,9 +24,12 @@
 <% end %>
 
 <% general_review.each do |a,c| %>
-<% if author_count.has_key?(a) %>
+<% if a == ""  %>
 <% else  %>
-<%= a %> - 1 общий 
+  <% if author_count.has_key?(a) %>
+  <% else  %>
+    <%= a %> - 1 общий 
+  <% end  %>
 <% end  %>
 <% end  %>
 

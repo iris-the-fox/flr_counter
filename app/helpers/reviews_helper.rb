@@ -2,7 +2,7 @@
 
 module ReviewsHelper
   def general_review
-    if @general.nil?
+    if @general_reviews.nil?
       {''=>''}
     else
     Hash[@general_reviews.pluck(:author).group_by { |x| x }.map { |k, v| [k, v.count] }] 
