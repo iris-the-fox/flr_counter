@@ -12,7 +12,7 @@
   <strong>Куратор:</strong>
   <%= @group.user.email %>
 </p>
-<%= link_to "Посмотреть колонку", show_column_group_path(@group) , class: "button-like show-column" %> 
+<%= link_to "Посмотреть колонку", show_column_group_path(@group), target: "_blank", class: "button-like show-column" %> 
 <h2><%= "ФЛР: " + @group.flr.number.to_s %></h2>
 
 <%= link_to 'Редактировать', edit_group_path(@group) %> |
