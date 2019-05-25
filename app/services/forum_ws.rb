@@ -12,7 +12,7 @@ class ForumWS
     doc = Nokogiri::HTML(page.body)
     body = doc.xpath('/html/body')
     content = body.css('.layout .middle .main-container .content')
-    forum = content.xpath('table[2]')
+    forum = content.xpath('table[3]')
     @review_arr = Set[]
     forum.xpath('tr').each do |row|
       review = Reviews_finder.new(row)
