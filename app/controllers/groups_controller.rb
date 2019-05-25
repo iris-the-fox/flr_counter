@@ -82,7 +82,7 @@ class GroupsController < ApplicationController
   def group_owner
     unless @group.user_id == current_user.id
       flash[:notice] = 'Доступ запрещен, вы не куратор данной группы'
-      redirect_to groups_path
+      redirect_to flr_url
     end
   end
 end

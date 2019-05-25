@@ -12,6 +12,7 @@ class Group < ApplicationRecord
 
   belongs_to :user
   has_many :stories, dependent: :destroy
+
   accepts_nested_attributes_for :stories, reject_if: :all_blank
 
   has_many :reviews, through: :stories
@@ -23,10 +24,8 @@ class Group < ApplicationRecord
   def all_stories=(names)
     self.stories = []
     names.split("\r\n\r\n").map do |name|
-      if Story.find_by(name: name.strip).nil?
-        story = Story.create!(name: name.strip)
-        stories << story
-      end
+      story = Story.create!(name: name.strip)
+      stories << story
     end
   end
 end
