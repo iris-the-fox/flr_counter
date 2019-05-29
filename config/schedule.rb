@@ -18,9 +18,9 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+ENV['RAILS_ENV'] = "development"
+set :output, 'log/whenever.log'
 
-# every 10.minute 
-#   runner "MyModel.some_process"
-#   rake "my:rake:task"
-#   command "/usr/bin/my_great_command"
-# end
+every 5.minutes do
+  rake "automation:last_page"
+end
