@@ -7,4 +7,12 @@ namespace :automation do
   	puts "#{Time.now} — Success!"
   end
 
+   desc "Rake task to get all pages until last"
+   task all_pages: :environment do
+  	puts "I AM WORKING too!!"
+  	Flr.find_by(current: true).all_pages
+  	puts "#{Time.now} — Success!"
+  end
+
+
 end

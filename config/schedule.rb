@@ -24,3 +24,7 @@ set :output, 'log/whenever.log'
 every 5.minutes do
   rake "automation:last_page"
 end
+
+every 2.minutes do
+  rake "automation:all_pages"
+end
