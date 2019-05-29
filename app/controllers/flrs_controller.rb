@@ -55,11 +55,9 @@ class FlrsController < ApplicationController
     redirect_to flrs_url, notice: 'Flr was successfully destroyed.'
   end
 
-  def retrieve_last_page
-    @flr = @current_flr
-    @flr.last_page = ForumPages.new(@flr.link).last_page
-    @flr.save
-    redirect_to @flr, notice: 'Last page was successfully added.'
+  def get_last_page
+    Flr.retrieve_last_page
+    redirect_to @current_flr, notice: 'Last page was successfully added.'
   end
 
   private
