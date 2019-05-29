@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
       resources :pages, exept: [:update, :edit] do
         collection do
-          post "all_pages"
+          post "get_all_pages"
         end
         member do
           post "update_full_page"

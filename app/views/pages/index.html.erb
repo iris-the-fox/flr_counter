@@ -4,7 +4,7 @@
 <p>Страниц в базе: <%= @flr.pages.count %></p>
 <%= link_to("Ссылка на форум", @flr.link, target: "_blank") %> 
 <br>
-<%= button_to 'Получить все страницы',  {action: "all_pages"} %>
+<%= button_to 'Получить все страницы',  {action: "get_all_pages"} %>
 <br>
 <table>
   <thead>
