@@ -9,5 +9,5 @@
 <%= link_to 'Back', flrs_path %>
 
 <br>
-<%= link_to "Последняя страница на форуме ФЛР #{@flr.number}", [:retrieve_last_page, @flr], method: :post, class: "button-like show-column" %> 
+<%= link_to "Последняя страница на форуме ФЛР #{@flr.number}", [:get_last_page, @flr], method: :post, class: "button-like show-column" %> 
 <%= render 'shared_views/groups' %>
