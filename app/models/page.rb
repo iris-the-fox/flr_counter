@@ -13,4 +13,16 @@ class Page < ApplicationRecord
       errors.add(:body, 'Сайт считает, что вы хотите его выкачать')
     end
   end
+
+  def all_messages
+    set = MessageArrayWS.new(self.body).review_arr
+    set.each do |review|
+      @message = self.messages.new(raw_body: review.raw_body,
+                                    body: review.body,
+                                    link: review.link,
+                                    author: review.author)
+      @message.save
+    end
+  end
+
 end
