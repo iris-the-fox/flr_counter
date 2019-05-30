@@ -38,14 +38,14 @@
 [b]О Т З Ы В Ы[/b]
 <% @group.stories.each_with_index do |s, i| %>
 <% i+=1 %>
-<a name='r<%= i %>'>[subtitle]<%= i %>. <%= s.name %> [/subtitle]</a>
-[LINK=#r<%= n %>]Вернуться к началу [/link]
-[PHOTOSMALL<%=i+1%>]
-<% s.reviews.each_with_index do |r, i|  %>
-<% i+=1 %>
-<%= i %>. [URL=<%= r.link %>]<%= r.author %>[/URL]
-<%= r.text %>
-<p class=abzac><div class='t2'> </div></p>
-<% end  %>
+  <a name='r<%= i %>'>[subtitle]<%= i %>. <%= s.name %> [/subtitle]</a>
+  [LINK=#r<%= n %>]Вернуться к началу [/link]
+  [PHOTOSMALL<%=i+1%>]
+  <% s.reviews.reverse_order.each_with_index do |r, i|  %>
+    <% i+=1 %>
+    <%= i %>. [URL=<%= r.link %>]<%= r.author %>[/URL]
+    <%= r.text %>
+    <p class=abzac><div class='t2'> </div></p>
+  <% end  %>
 <% end  %>
 [/cut]
