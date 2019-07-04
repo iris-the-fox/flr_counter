@@ -39,14 +39,9 @@ class PagesController < ApplicationController
     @page.destroy
     redirect_to flr_pages_url(@flr), notice: 'Page was successfully destroyed.'
   end
-
-  def all_pages
-    range = (@flr.first_page..@flr.last_page).to_a - @flr.pages.pluck(:number)
-    range.each do |page|
-      some_page = PageWS.new(page, @flr.link)
-      @page = @flr.pages.find_or_create_by(body: some_page.body, link: some_page.link, number: some_page.number)
-    end
-    @flr.save
+  
+  def get_all_pages
+    @current_flr.all_pages
     redirect_to flr_pages_path, notice: 'Pages was successfully added.'
   end
 
