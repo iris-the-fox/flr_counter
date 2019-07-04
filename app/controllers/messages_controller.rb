@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
-  before_action :set_page, only: %i[index new all_messages]
+  before_action :set_page, only: %i[index new get_all_messages]
   before_action :set_message, only: %i[show destroy]
 
   def index
@@ -14,17 +14,10 @@ class MessagesController < ApplicationController
     @message = @page.messages.new
   end
 
-  def all_messages
-    set = MessageArrayWS.new(@page.body).review_arr
-    set.each do |review|
-      @message = @page.messages.new(raw_body: review.raw_body,
-                                    body: review.body,
-                                    link: review.link,
-                                    author: review.author)
-      @message.save
-    end
+  def get_all_messages
+    @page.all_messages
     redirect_to page_path(@page), notice: 'Messages was successfully created.'
-  end
+  end  
 
   def destroy
     @page = @message.page

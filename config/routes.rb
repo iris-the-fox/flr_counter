@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         end
         resources :messages do
           collection do
-            post "all_messages"
+            post "get_all_messages"
           end
         end
       end
